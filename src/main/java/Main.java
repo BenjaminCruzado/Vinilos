@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 public class Main {
     public static void main(String[] args) {
 
@@ -17,18 +19,53 @@ public class Main {
         System.out.println("Espacio máximo colección: " + vinilos.length);
 
         mostrarTotal(vinilos);
-       // mostrarDisponibles(vinilos);
+        mostrarEspaciosDisponibles(vinilos);
 
         String artista = "AC-DC";
         System.out.println("Buscar artista " + artista);
-       // mostrarBusquedaArtista(vinilos, artista);
+        mostrarBusquedaArtista(vinilos, artista);
 
-       // buscarArtista(vinilos, artista);
-       // mostrarColeccion(vinilos);
+        mostrarColeccion(vinilos);
+    }
+
+    private static void mostrarColeccion(String[][] vinilos) {
+        for (int i = 0; i < vinilos.length; i++) {
+            if(vinilos[i][0] != null){
+                System.out.println("Fila " + (i+1) + ": " + vinilos[i][0] + " - " + vinilos[i][1] + " - " + vinilos[i][2]);
+            }
+        }
+
     }
 
     public static void mostrarTotal(String[][] vinilos) {
         System.out.println("El total de vinilos es: " + totalVinilos(vinilos));
+    }
+    public static void mostrarEspaciosDisponibles(String[][] vinilos) {
+        System.out.println("El total de espacios disponibles es: " + espaciosDisponibles(vinilos));
+    }
+    public static void mostrarBusquedaArtista(String[][] vinilos, String nombreArtista){
+        if (buscarArtista(vinilos, nombreArtista) == true){
+            System.out.println("El artista " + nombreArtista + " si esta en la coleccion");
+        } else{
+            System.out.println("El artista " + nombreArtista + " no esta en la coleccion");
+        }
+    }
+    public static boolean buscarArtista(String[][] vinilos, String nombreArtista){
+
+        for (int i = 0; i < vinilos.length; i++) {
+            if (Objects.equals(vinilos[i][0], nombreArtista)) {
+                return true;
+            }
+        }
+        return false;
+    }
+    public static int espaciosDisponibles(String[][] vinilos){
+        int contador = 0;
+        for (int i = 0; i < vinilos.length; i++) {
+            if(vinilos[i][0] == null){
+                contador++;
+            }
+        } return contador;
     }
     public static int totalVinilos(String[][] vinilos){
         int contador = 0;
