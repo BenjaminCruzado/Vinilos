@@ -15,6 +15,29 @@ public class Main {
         agregarVinilo(vinilos, "Kiss", "Destroyer", "1976");
 
         System.out.println("Espacio máximo colección: " + vinilos.length);
+
+        mostrarTotal(vinilos);
+       // mostrarDisponibles(vinilos);
+
+        String artista = "AC-DC";
+        System.out.println("Buscar artista " + artista);
+       // mostrarBusquedaArtista(vinilos, artista);
+
+       // buscarArtista(vinilos, artista);
+       // mostrarColeccion(vinilos);
+    }
+
+    public static void mostrarTotal(String[][] vinilos) {
+        System.out.println("El total de vinilos es: " + totalVinilos(vinilos));
+    }
+    public static int totalVinilos(String[][] vinilos){
+        int contador = 0;
+        for (int i = 0; i < vinilos.length; i++) {
+            if(vinilos[i][0] != null){
+                contador++;
+            }
+
+        } return contador;
     }
 
     public static void agregarVinilo(String[][] vinilos, String artista, String album, String lanzamiento){
